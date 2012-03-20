@@ -1,0 +1,7 @@
+open smartgit
+go to project
+click cloneselect remote git or svn
+
+paste:git@github.com:BeattieM/Final-Project.git
+
+click next
