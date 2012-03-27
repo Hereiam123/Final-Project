@@ -11,8 +11,9 @@
 		or print "select failed because ".mysql_error();
 		
 	//username and password from user
-	$userName = mysql_real_escape_string($_POST['userName']);
-	$password = mysql_real_escape_string($_POST['password']);
+	$userName = mysql_real_escape_string($_GET['userName']);
+	$password = mysql_real_escape_string($_GET['password']);
+	$passwordCheck = mysql_real_escape_string($_GET['passwordAgain']);
 	
 	
 	//get current list of users
@@ -20,7 +21,7 @@
 	
 	
 	//if username already exists run this
-	if($userQuery[0] > 0){
+	if(sizeof($userQuery[0]) > 0){
 			mysql_close($connection);
 			print "
 			<table width='100%' border='1' align='center' cellpadding='5' cellspacing='0' bordercolor='#99CC33'>
@@ -28,12 +29,20 @@
 					<td colspan='2'><div align='center'><strong>Username already taken!</strong></div></td>
 				</tr>
 			</table>";
-			
 		} 
-	
+	else if($passwordCheck!=$password)
+	{
+			mysql_close($connection);
+			print "
+			<table width='100%' border='1' align='center' cellpadding='5' cellspacing='0' bordercolor='#99CC33'>
+				<tr bgcolor='pink'> 
+					<td colspan='2'><div align='center'><strong>Passwords do not match!</strong></div></td>
+				</tr>
+			</table>";
+	}
 	// if not match found run this
-	else {
-			
+	else 
+	{		
 			//add user to database
 			$addUser = mysql_query("INSERT INTO `userlist` (`userName`,`userPassword`) VALUES ('$userName','$password')");
 			
@@ -49,59 +58,3 @@
 			exit();
 	}
 ?>
-<html>
-	<head>
-	</head>
-	
-	<body>
-	
-		<!--Login Form-->
-		<form action="login.php" method="post" name="register" id="register" style="display:inline;">
-			<table width="100%" border="1" align="center" cellpadding="5" cellspacing="0" bordercolor="#99CC33">
-				<tr bgcolor="#99CC99"> 
-					<td colspan="2"><div align="center"><strong>Please log in:</strong></div></td>
-				</tr>
-				<tr> 
-					<td width="47%"><strong>Username:</strong></td>
-					<td width="53%"><input name="userName" type="text" id="userName"></td>
-				</tr>
-				<tr> 
-					<td><strong>Password:</strong></td>
-					<td><input name="password" type="password" id="password"></td>
-				</tr>
-				<tr> 
-					<td colspan="2">
-						<input name="Submit" type="submit" id="Submit" value="Sign-In">
-					</td>
-				</tr>
-			</table>
-		</form>
-	
-		<!--Registration Form-->
-		<form action="register.php" method="post" name="register" id="register" style="display:inline;">
-			  <table width="100%" border="1" align="center" cellpadding="5" cellspacing="0" bordercolor="#99CC33">
-					<tr bgcolor="#99CC99"> 
-						<td colspan="2"><div align="center"><strong>Please enter registration information: </strong></div></td>
-					</tr>
-					<tr> 
-						<td width="47%"><strong>Username:</strong></td>
-						<td width="53%"><input name="userName" type="text" id="userName"></td>
-					</tr>
-					<tr> 
-						<td><strong>Password:</strong></td>
-						<td><input name="password" type="password" id="password"></td>
-					</tr>
-					<tr>
-						<td><strong>Re-enter password: </strong></td>
-						<td><input name="password2" type="password" id="password2" /></td>
-					</tr>
-					<tr> 
-						<td colspan="2" class="regsubmit">
-							<input name="Submit" type="submit" id="Submit" value="Register">
-						</td>
-					</tr>
-			  </table>
-		</form>
-		
-	</body>
-</html>

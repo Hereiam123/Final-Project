@@ -1,7 +1,6 @@
 <?php
 	//required info
 	include('config.php');
-
 	
 	//delete current user cookie
 	setcookie("isLoged", '' ,time()-3600);

@@ -1,6 +1,6 @@
 <?php
 	//page redirect
-	$logoutPage = 'main.php';
+	$logoutPage = 'medHome.html';
 	$loginPage = 'myaccount.php';
 
 	
