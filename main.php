@@ -1,6 +1,9 @@
 <?php
+	//required info
 	include('config.php');
 	
+	
+	//redirect if a user is already logged in
 	if( isset( $_COOKIE['isLoged'] ) ){
 		header("Location: $loginPage");
 		exit();
@@ -11,6 +14,8 @@
 	</head>
 	
 	<body>
+	
+		<!--Login Form-->
 		<form action="login.php" method="post" name="register" id="register" style="display:inline;">
 			<table width="100%" border="1" align="center" cellpadding="5" cellspacing="0" bordercolor="#99CC33">
 				<tr bgcolor="#99CC99"> 
@@ -32,6 +37,7 @@
 			</table>
 		</form>
 	
+		<!--Registration Form-->
 		<form action="register.php" method="post" name="register" id="register" style="display:inline;">
 			  <table width="100%" border="1" align="center" cellpadding="5" cellspacing="0" bordercolor="#99CC33">
 					<tr bgcolor="#99CC99"> 
@@ -56,5 +62,6 @@
 					</tr>
 			  </table>
 		</form>
+		
 	</body>
 </html>
