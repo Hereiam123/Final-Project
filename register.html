@@ -1,0 +1,36 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>MedTrack Register</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.css" />
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.js"></script>
+</head> 
+<body> 
+
+<div data-role="page">
+	
+	<div data-role="header">
+		<a href="medHome.html" data-role="button" data-mini="true" data-icon="home">Home</a><h1>MedTrack Register</h1>
+	</div>
+
+	<div data-role="content">	
+		<form id="" action="register.php" method="get">
+			<label for="userID">Choose UserID:</label>
+			<input type="text" name="userID" id="userID" data-mini="true" />
+			
+			<label for="password">Choose Password (longer than 4 characters):</label>
+			<input type="text" name="password" id="password" data-mini="true" />
+			
+			<label for="passwordAgain">Re-enter Password:</label>
+			<input type="text" name="passwordAgain" id="passwordAgain" data-mini="true" />
+		
+			<input type="submit" value="Submit" />
+		</form>
+	</div>
+
+</div>
+
+</body>
+</html>
